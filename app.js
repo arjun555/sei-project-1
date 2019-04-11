@@ -1,4 +1,37 @@
 console.log('tic tac toe game');
+var gameBoard = [
+    ['', '', ''],
+    ['', '', ''],
+    ['', '', '']
+];
+
+var playersDatabase ={
+    0:{
+        Name: 'Player 1' ,
+        Piece: 'x',
+        CSSClass: 'player1',
+        cpu: false,
+        wins: 0,
+        losses: 0,
+        draws: 0
+    },
+    1:{
+        Name: 'Player 2' ,
+        Piece: 'o',
+        CSSClass: 'player2',
+        cpu: false,
+        wins: 0,
+        losses: 0,
+        draws: 0
+    }
+}
+var gameboardDiv = document.querySelector('#gameboard');
+var gameboardCells = document.querySelectorAll('.gameboardCell');
+var resetBtn = document.querySelector('.reset-btn');
+var player1 = playersDatabase[0];
+var player2 = playersDatabase[1];
+var isPlayer1turn = true;
+var isPlayer2turn = false;
 
 // create an n x n array
 function createBoard(n){
@@ -10,8 +43,8 @@ function createBoard(n){
     return arr;
 }
 
-function playPiece(piece, x, y){
-    gameBoard[y][x] = piece;
+function playPiece(piece, row, cell){
+    gameBoard[row][cell] = piece;
 }
 
 // returns how many pieces are in the row
@@ -62,8 +95,125 @@ function getPieceDiagonalBackwardCount(piece, n){
     return counter;
 }
 
-var gameBoard = [
-    ['x', 'o', 'x'],
-    ['x', 'x', 'x'],
-    ['x', 'x', 'x']
-];
+function checkWin(player, boardSize){
+    var rowCount, colCount, DiaFwdCount, DiaBckCount;
+    // check columns and rows
+    for(var i = 0; i < boardSize; i++){
+        colCount = getPieceColCount(player.Piece, i, boardSize);
+        rowCount = getPieceRowCount(player.Piece, i, boardSize);
+        if(rowCount === boardSize || colCount === boardSize){
+            return true;
+        }
+    }
+    // check diagonals
+    DiaFwdCount = getPieceDiagonalForwardCount(player.Piece, boardSize);
+    DiaBckCount = getPieceDiagonalBackwardCount(player.Piece, boardSize);
+    if(DiaFwdCount === boardSize || DiaBckCount === boardSize){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+function updateWinCount(player){
+    player.wins += 1;
+}
+
+function togglePlayerTurn(){
+    if(isPlayer1turn){
+        isPlayer1turn = false;
+        isPlayer2turn = true;
+    }else{
+        isPlayer1turn = true;
+        isPlayer2turn = false;
+    }
+}
+
+function isCellPlayed(row, cell){
+    if(gameBoard[row][cell] === ""){
+        return false;
+    }else{
+        return true;
+    }
+}
+
+function isBoardFull(){
+    for(var i = 0; i < gameBoard.length; i++){
+        for(var j = 0; j < gameBoard.length; j++){
+            // console.log(gameBoard[i][j]);
+            if(gameBoard[i][j] === ""){
+                return false;
+            }
+        }
+    }
+    return true;
+}  
+
+function clearBoard(){
+    for(var i = 0; i < gameBoard.length; i++){
+        for(var j = 0; j < gameBoard.length; j++){
+            gameBoard[i][j] = "";
+        }
+    }
+}
+
+function clearBoardCSS(){
+    gameboardCells.forEach(function(element, index){
+        element.classList.remove(player1.CSSClass);
+        element.classList.remove(player2.CSSClass);
+    });
+}
+
+function resetGame(){
+    clearBoard();
+    clearBoardCSS();
+}
+
+function addPieceToGameboard(player, element){
+    (element.classList.add(player.CSSClass));
+}
+
+function playGame(row, cell){
+    if(isPlayer1turn){
+        playPiece(player1.Piece, row, cell);
+        addPieceToGameboard(player1, event.target);
+    }else if(isPlayer2turn){
+        playPiece(player2.Piece, row, cell);
+        addPieceToGameboard(player2, event.target);
+    }
+    togglePlayerTurn();
+    if(checkWin(player1, gameBoard.length)){
+        // player 1 is the winner
+        console.log('player 1 won');
+        updateWinCount(player1);
+    }else if(checkWin(player2, gameBoard.length)){
+        // player 2 is the winner
+        console.log('player 2 won');
+        updateWinCount(player2);
+    }else if(isBoardFull()){
+        console.log('draw');
+    }
+}
+
+function handleClick(event){
+    //debugger
+    var row = event.target.dataset.row;
+    var cell = event.target.dataset.cell;
+
+    //If there is a winner, click to close winning dialog
+
+
+    // Play the game if there is no current winner
+    if(isCellPlayed(row, cell) !== true){
+        playGame(row, cell);
+    }else{
+        console.log('Cell has been played. Choose another cell');
+    }
+}
+
+function handleResetClick(){
+    resetGame();
+}
+
+gameboardDiv.addEventListener('click', handleClick);
+resetBtn.addEventListener('click', handleResetClick);

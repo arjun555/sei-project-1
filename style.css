@@ -2,23 +2,85 @@ body{
     background-color: lightblue;
 }
 
-.container{
+main{
+    height: 60%;
     display: flex;
     flex-direction: column;
+    border: 2px solid yellow;
+}
+
+header{
+    border: 2px solid yellow;
+}
+
+footer{
+    border: 2px solid yellow;
 }
 
 #gameboard{
     border: 1px solid red;
+    width: 90vw;
+    height: 90vw;
+
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .gameboardRow{
-    display: block;
+    /* display: inline-block; */
     border: 1px solid green;
 }
 
-.gameboardSquare{
-    display: inline-block;
+.gameboardCell{
+    display: inline-flex;
     border: 1px solid blue;
-    width: 100px;
-    height: 100px;
+    width: 30%;
+    height: 30%;
+    margin: 2px;
+}
+
+.player1{
+    background-color: green;
+}
+
+.player2{
+    background-color: red;
+}
+
+#overlay{
+    position: fixed;
+    display: none;
+    width: 60%;
+    height: 20%;
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+button{
+    border: 1px solid black;
+}
+
+section{
+    border: 2px solid purple;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.rules{
+    border: 1px solid orange;
+}
+
+.scores{
+    border: 1px solid orange;
+}
+
+.options{
+    border: 1px solid orange;
+}
+
+.game{
+    margin: auto;
 }

@@ -5,30 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header><h1>tictactoe</h1></header>
+    <header><h1>bic back boe</h1></header>
     <main>
-        <div id = "gameboard" class = "container">
-            <div class = "gameboardRow">
-                <div class = "gameboardSquare">1</div>
-                <div class = "gameboardSquare">1</div>
-                <div class = "gameboardSquare">1</div>
+        <section class="game">
+            <div id = "overlay"></div>
+            <div id = "gameboard">
+                <div class = "gameboardCell" data-row="0" data-cell="0" data-played="false">0.0</div>
+                <div class = "gameboardCell" data-row="0" data-cell="1" data-played="false">0.1</div>
+                <div class = "gameboardCell" data-row="0" data-cell="2" data-played="false">0.2</div>
+                <div class = "gameboardCell" data-row="1" data-cell="0" data-played="false">1.0</div>
+                <div class = "gameboardCell" data-row="1" data-cell="1" data-played="false">1.1</div>
+                <div class = "gameboardCell" data-row="1" data-cell="2" data-played="false">1.2</div>
+                <div class = "gameboardCell" data-row="2" data-cell="0" data-played="false">2.0</div>
+                <div class = "gameboardCell" data-row="2" data-cell="1" data-played="false">2.1</div>
+                <div class = "gameboardCell" data-row="2" data-cell="2" data-played="false">2.2</div>
+            </section>
+        <section class="game-data">
+            <div class="rules">
+                <h2>RULES</h2>
             </div>
-            <div class = "gameboardRow">
-                    <div class = "gameboardSquare">2</div>
-                    <div class = "gameboardSquare">2</div>
-                    <div class = "gameboardSquare">2</div>
+            <div class="scores">
+                <h2>SCORES</h2>
             </div>
-            <div class = "gameboardRow">
-                    <div class = "gameboardSquare">3</div>
-                    <div class = "gameboardSquare">3</div>
-                    <div class = "gameboardSquare">3</div>
+            <div class="options">
+                <h2>OPTIONS</h2>
             </div>
-        </div>
+        </section>
+        <button class = "reset-btn">Reset Game</button>
     </main>
-    
+    <footer>
+        <div>
+            &COPY; Arjun Patel 2019
+        </div>            
+    </footer>
     <script src= "app.js"></script>
 </body>
 </html>
