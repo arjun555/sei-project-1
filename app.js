@@ -32,6 +32,9 @@ var gameboardCells = document.querySelectorAll('.gameboardCell');
 var endGameOverlay = document.querySelector('#overlay');
 var gameResultSpan = document.querySelector('.game-result');
 var gameResultImg = document.querySelector('.game-result-img');
+var player1ScoreSpan = document.querySelector('.player1-score');
+var player2ScoreSpan = document.querySelector('.player2-score');
+
 var player1 = playersDatabase[0];
 var player2 = playersDatabase[1];
 var isPlayer1turn = true;
@@ -194,11 +197,13 @@ function checkWinner(){
         // player 1 is the winner
         console.log('player 1 won');
         updateWinCount(player1);
+        setPlayer1ScoreSpan();
         return player1;
     }else if(isPlayerWinner(player2, gameBoard.length)){
         // player 2 is the winner
         console.log('player 2 won');
         updateWinCount(player2);
+        setPlayer2ScoreSpan();
         return player2;
     }else if(isBoardFull()){
         console.log('draw');
@@ -206,6 +211,14 @@ function checkWinner(){
     }else{
         return null;
     }
+}
+
+function setPlayer1ScoreSpan(){
+    player1ScoreSpan.textContent = player1.wins;
+}
+
+function setPlayer2ScoreSpan(){
+    player2ScoreSpan.textContent = player2wins;
 }
 
 function setOverlayContent(player){
@@ -225,7 +238,7 @@ function hideOverlay(){
 }
 
 function handleClick(event){
-    //debugger
+    // debugger
     var row = event.target.dataset.row;
     var cell = event.target.dataset.cell;
 

@@ -10,11 +10,12 @@ body{
 }
 
 main{
-    height: 60%;
+    /* height: 60%; */
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     flex-wrap: wrap;
+    padding: 10px;
     /* border: 2px solid yellow; */
 }
 
@@ -27,6 +28,7 @@ header{
 
 footer{
     /* border: 2px solid yellow; */
+    padding: 10px;
 }
 
 #gameboard{
@@ -46,11 +48,13 @@ footer{
 }
 
 .gameboardCell{
-    display: inline-flex;
+    /* display: inline-flex; */
     border: 1px solid black;
+    border-radius: 50%;
     width: 30%;
     height: 30%;
     margin: 2px;
+    text-align: center;
 }
 
 .player1{
@@ -66,7 +70,7 @@ footer{
     display: none;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.9);
     cursor: pointer;
     text-align: center;
     color: white;
@@ -74,11 +78,32 @@ footer{
 
 .overlay-box{
     margin: auto;
-    width: 40vw;
+    width: 60vw;
+}
+
+.overlay div{
+    padding: 10px;
+}
+
+.overlay-result-gif{
+    width:100%;
+    padding-bottom:100%;
+    padding-right: 100%;
+    position:relative;
+}
+
+.overlay-result-gif iframe{
+    width: 100%;
+    height: 100%;
+    position:absolute;
+}
+
+div iframe{
+    width: 100%;
 }
 
 div img{
-    width: 75%;
+    width: 100%;
 }
 
 button{
@@ -92,9 +117,23 @@ section{
     width: 100%;
 }
 
-.scores{
-    /* border: 1px solid orange; */
+section div{
+    padding: 10px;
 }
+
+.scores h2{
+    border-bottom: 1px solid black;
+    padding: 3px;
+    margin-bottom: 6px;
+    text-align: center;
+}
+
+.scores span{
+    display: inline;
+    font-size: 1.6em;
+    /* text-align: left; */
+}
+
 
 .options{
     /* border: 1px solid orange; */
@@ -104,13 +143,26 @@ section{
 
 }
 
+.game-result{
+    font-size: 1.5em;
+}
+
 .game-data{
     display: inline-block;
 }
 
+
+
 @media (min-width: 800px){
     body{
         /* background-color: lightcoral; */
+    }
+
+    header{
+        /* border: 2px solid yellow; */
+        text-align: center;
+        font-size: 2.5em;
+        padding: 10px;
     }
 
     main{
@@ -118,14 +170,19 @@ section{
     }
 
     #gameboard{
-        width: 50vw;
-        height: 50vw;
+        width: 49vw;
+        height: 49vw;
     }
 
     #overlay{
 
 
     }
+
+    .overlay-box{
+        width: 40vw;
+    }
+
     .game{
         width: 65%;
     }
