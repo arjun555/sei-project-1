@@ -9,6 +9,7 @@ var playersDatabase ={
     0:{
         Name: 'Player 1' ,
         Piece: 'x',
+        Avatar: '',
         CSSClass: 'player1',
         cpu: false,
         wins: 0,
@@ -18,6 +19,7 @@ var playersDatabase ={
     1:{
         Name: 'Player 2' ,
         Piece: 'o',
+        Avatar: '',
         CSSClass: 'player2',
         cpu: false,
         wins: 0,
@@ -27,7 +29,9 @@ var playersDatabase ={
 }
 var gameboardDiv = document.querySelector('#gameboard');
 var gameboardCells = document.querySelectorAll('.gameboardCell');
-var resetBtn = document.querySelector('.reset-btn');
+var endGameOverlay = document.querySelector('#overlay');
+var gameResultSpan = document.querySelector('.game-result');
+var gameResultImg = document.querySelector('.game-result-img');
 var player1 = playersDatabase[0];
 var player2 = playersDatabase[1];
 var isPlayer1turn = true;
@@ -95,7 +99,7 @@ function getPieceDiagonalBackwardCount(piece, n){
     return counter;
 }
 
-function checkWin(player, boardSize){
+function isPlayerWinner(player, boardSize){
     var rowCount, colCount, DiaFwdCount, DiaBckCount;
     // check columns and rows
     for(var i = 0; i < boardSize; i++){
@@ -182,17 +186,42 @@ function playGame(row, cell){
         addPieceToGameboard(player2, event.target);
     }
     togglePlayerTurn();
-    if(checkWin(player1, gameBoard.length)){
+
+}
+
+function checkWinner(){
+    if(isPlayerWinner(player1, gameBoard.length)){
         // player 1 is the winner
         console.log('player 1 won');
         updateWinCount(player1);
-    }else if(checkWin(player2, gameBoard.length)){
+        return player1;
+    }else if(isPlayerWinner(player2, gameBoard.length)){
         // player 2 is the winner
         console.log('player 2 won');
         updateWinCount(player2);
+        return player2;
     }else if(isBoardFull()){
         console.log('draw');
+        return 'Draw';
+    }else{
+        return null;
     }
+}
+
+function setOverlayContent(player){
+    if(player !== 'Draw'){
+        gameResultSpan.textContent = `${player.Name} is victorious`;
+    }else{
+        gameResultSpan.textContent = `stalemate`;
+    }
+}
+
+function showOverlay(){
+    endGameOverlay.style.display = 'flex';
+}
+
+function hideOverlay(){
+    endGameOverlay.style.display = 'none';
 }
 
 function handleClick(event){
@@ -203,17 +232,29 @@ function handleClick(event){
     //If there is a winner, click to close winning dialog
 
 
-    // Play the game if there is no current winner
+    // Play the game
     if(isCellPlayed(row, cell) !== true){
         playGame(row, cell);
     }else{
         console.log('Cell has been played. Choose another cell');
     }
+
+    // Check if there is a winner
+    var winner = checkWinner();
+    if(winner !== ''){
+        setOverlayContent(winner);
+        showOverlay();
+        console.log(winner);
+    }else{
+        hideOverlay();
+    }
 }
 
-function handleResetClick(){
+
+function handleOverlayClick(event){
+    hideOverlay();
     resetGame();
 }
 
 gameboardDiv.addEventListener('click', handleClick);
-resetBtn.addEventListener('click', handleResetClick);
+endGameOverlay.addEventListener('click', handleOverlayClick);

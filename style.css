@@ -1,24 +1,36 @@
+@font-face{
+    font-family: game-of-thrones;
+    src: url(game-of-thrones.ttf);
+}
+
 body{
-    background-color: lightblue;
+    font-family: game-of-thrones;
+    color: rgb(43, 43, 43);
+    /* background-color: lightblue; */
 }
 
 main{
     height: 60%;
     display: flex;
-    flex-direction: column;
-    border: 2px solid yellow;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    /* border: 2px solid yellow; */
 }
 
 header{
-    border: 2px solid yellow;
+    /* border: 2px solid yellow; */
+    text-align: center;
+    font-size: 1.4em;
+    padding: 10px;
 }
 
 footer{
-    border: 2px solid yellow;
+    /* border: 2px solid yellow; */
 }
 
 #gameboard{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     width: 90vw;
     height: 90vw;
 
@@ -30,12 +42,12 @@ footer{
 
 .gameboardRow{
     /* display: inline-block; */
-    border: 1px solid green;
+    /* border: 1px solid green; */
 }
 
 .gameboardCell{
     display: inline-flex;
-    border: 1px solid blue;
+    border: 1px solid black;
     width: 30%;
     height: 30%;
     margin: 2px;
@@ -52,10 +64,21 @@ footer{
 #overlay{
     position: fixed;
     display: none;
-    width: 60%;
-    height: 20%;
-    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
     cursor: pointer;
+    text-align: center;
+    color: white;
+}
+
+.overlay-box{
+    margin: auto;
+    width: 40vw;
+}
+
+div img{
+    width: 75%;
 }
 
 button{
@@ -63,24 +86,51 @@ button{
 }
 
 section{
-    border: 2px solid purple;
+    /* border: 2px solid purple; */
     display: flex;
     justify-content: center;
     width: 100%;
 }
 
-.rules{
-    border: 1px solid orange;
-}
-
 .scores{
-    border: 1px solid orange;
+    /* border: 1px solid orange; */
 }
 
 .options{
-    border: 1px solid orange;
+    /* border: 1px solid orange; */
 }
 
 .game{
-    margin: auto;
+
+}
+
+.game-data{
+    display: inline-block;
+}
+
+@media (min-width: 800px){
+    body{
+        /* background-color: lightcoral; */
+    }
+
+    main{
+        flex-direction: row;
+    }
+
+    #gameboard{
+        width: 50vw;
+        height: 50vw;
+    }
+
+    #overlay{
+
+
+    }
+    .game{
+        width: 65%;
+    }
+
+    .game-data{
+        width: 30%;
+    }
 }
