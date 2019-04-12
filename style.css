@@ -246,6 +246,8 @@ section div{
 
 .game-data{
     display: inline-block;
+    position: relative;
+    z-index: 1;
 }
 
 
