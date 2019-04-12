@@ -275,3 +275,30 @@ function handleOverlayClick(event){
 
 gameboardDiv.addEventListener('click', handleClick);
 endGameOverlay.addEventListener('click', handleOverlayClick);
+
+var snowflakes = document.querySelectorAll('.snow');
+
+
+
+function getRandom(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+  
+  (function letItSnow(){
+    
+    for (var i = 0; i < snowflakes.length; i++) {
+      var snowflake = snowflakes[i];
+      snowflake.setAttribute('cx', getRandom(1,100) + '%');
+      snowflake.setAttribute('cy', '-' + getRandom(1,100));
+      snowflake.setAttribute('r', getRandom(1,3));
+
+      if(i%3 === 0){
+        snowflake.style.animationDelay = '1s';
+      }
+      if(i%4 === 0){
+        snowflake.style.animationDelay = '2s';
+      }else{
+        snowflake.style.animationDelay = '0s';
+      }
+    }
+  })();
