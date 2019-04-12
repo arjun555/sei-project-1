@@ -53,6 +53,7 @@ function createBoard(n){
     return arr;
 }
 
+// Play a piece on the internal game board
 function playPiece(piece, row, cell){
     gameBoard[row][cell] = piece;
 }
@@ -150,7 +151,6 @@ function isCellPlayed(row, cell){
 function isBoardFull(){
     for(var i = 0; i < gameBoard.length; i++){
         for(var j = 0; j < gameBoard.length; j++){
-            // console.log(gameBoard[i][j]);
             if(gameBoard[i][j] === ""){
                 return false;
             }
@@ -198,18 +198,15 @@ function playGame(row, cell){
 function checkWinner(){
     if(isPlayerWinner(player1, gameBoard.length)){
         // player 1 is the winner
-        console.log('player 1 won');
         updateWinCount(player1);
         setPlayer1ScoreSpan();
         return player1;
     }else if(isPlayerWinner(player2, gameBoard.length)){
         // player 2 is the winner
-        console.log('player 2 won');
         updateWinCount(player2);
         setPlayer2ScoreSpan();
         return player2;
     }else if(isBoardFull()){
-        console.log('draw');
         return 'Draw';
     }else{
         return null;
@@ -232,8 +229,6 @@ function setOverlayContent(player){
         gameResultSpan.textContent = `stalemate`;
         overlayResultGif.src = resultGifDraw;
     }
-
-
 }
 
 function showOverlay(){
@@ -277,9 +272,6 @@ gameboardDiv.addEventListener('click', handleClick);
 endGameOverlay.addEventListener('click', handleOverlayClick);
 
 var snowflakes = document.querySelectorAll('.snow');
-
-
-
 function getRandom(min, max) {
     return Math.random() * (max - min) + min;
   }
