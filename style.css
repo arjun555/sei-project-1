@@ -52,7 +52,7 @@ footer{
     background-image: url("images/Game_of_Thrones_triple_slash_O.svg");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 80%;
+    background-size: 75%;
     /* border: 1px solid black; */
     border-radius: 50%;
     width: 30%;
@@ -141,7 +141,7 @@ section div{
     display: flex;
     flex-direction: column;
     background-color: white;
-    box-shadow: 0 4px 10px 1px rgba(0,0,0,.06), 0 3px 8px 1px rgba(0,0,0,.16);
+    box-shadow: 0 4px 10px 1px rgba(255,255,255,.06), 0 3px 8px 1px rgba(255,255,255,.16);
     color: rgb(43, 43, 43);
 }
 
@@ -153,15 +153,29 @@ section div{
 
 .player-score-name{
     font-size: 12px;
-    width: 50%;
-    text-align: right;
+    width: 75%;
+    /* text-align: right; */
     padding: 1em;
+    display: flex;
+    line-height: 2.5em;
+}
+
+.player-score-name img{
+    height: 3em;
+    width: auto;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
 }
 
 .player-score-box{
     font-size: 12px;
-    width: 50%;
-    text-align: center;
+    width: 15%;
+    padding: 0.5em;
+}
+
+.player-score-icon{
+    font-size: 12px;
+    width: 25%;
     padding: 0px;
 }
 
@@ -176,7 +190,7 @@ section div{
 
 
 .scores h2{
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid rgb(43, 43, 43);
     padding: 3px;
     margin-bottom: 6px;
     text-align: center;
@@ -225,4 +239,9 @@ section div{
         text-align: right;
         padding: 1em;
     }
+}
+
+
+.gameboardCell:hover{
+    background-size: 90%;
 }
