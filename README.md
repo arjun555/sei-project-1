@@ -4,6 +4,9 @@ GA SEI-19 Project 1 - Tic Tac Toe Game
 # Brief
 Create a rendition of the class game - tic tac toe
 
+# Link to Game
+https://arjun555.github.io/tictactoe-game/
+
 # Planning
 What the game needs:
     - 2 Players  
@@ -24,8 +27,8 @@ CSS - Snows in the background
 CSS - Overlay on game result. Shows a gif  
 JS - Keeping count of rows/columns/diagonals will be helpful when making CPU player logic  
 
-# Link to Game
-https://arjun555.github.io/tictactoe-game/
+# Future Implementations
+JS - CPU Player at a medium and impossible level
 
 # sources
 Martell House Icon (https://visualpharm.com/free-icons/martell%20house-595b40b65ba036ed117d1f7b)  
