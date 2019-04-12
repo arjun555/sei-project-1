@@ -20,3 +20,4 @@ Greyjoy House Icon (https://visualpharm.com/free-icons/greyjoy%20house-595b40b65
 Tyrell House Icon (https://visualpharm.com/free-icons/tyrell%20house-595b40b65ba036ed117d268f)
 Victory Boom GIF (https://giphy.com/embed/LrN9NbJNp9SWQ)
 Dissapointed GIF (https://giphy.com/embed/wPOARRtwuFG0)
+'O' SVG (https://upload.wikimedia.org/wikipedia/commons/1/12/Game_of_Thrones_triple_slash_O.svg)

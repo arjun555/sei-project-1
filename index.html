@@ -11,37 +11,43 @@
 <body>
     <div id = "overlay">
         <div class='overlay-box'>
-            <div class='overlay-result-gif'>
-                <iframe src="https://giphy.com/embed/wPOARRtwuFG0" frameBorder="0" class="giphy-embed"></iframe>
+            <div class='overlay-result'>
+                <iframe class="overlay-result-gif giphy-embed" src="" frameBorder="0"></iframe>
             </div>
-            <div><span class = "game-result">placeholder</span></div>
+            <div>
+                <span class = "game-result">placeholder</span>
+            </div>
         </div>
     </div>
-    <header><h1>Game of Tic Tac Toe</h1></header>
+    <header>
+        <h1><span class="first-letter">G</span>ame of <span class="first-letter">T</span>ic <span class="first-letter">T</span>ac <span class="first-letter">T</span>oe</h1>
+    </header>
     <main>
         <section class="game">
             <div id = "gameboard">
-                <div class = "gameboardCell" data-row="0" data-cell="0" data-played="false"><img src="images/Arryn House-595b40b65ba036ed117d17a2.svg"></div>
-                <div class = "gameboardCell" data-row="0" data-cell="1" data-played="false">O</div>
-                <div class = "gameboardCell" data-row="0" data-cell="2" data-played="false">0.2</div>
-                <div class = "gameboardCell" data-row="1" data-cell="0" data-played="false">1.0</div>
-                <div class = "gameboardCell" data-row="1" data-cell="1" data-played="false">1.1</div>
-                <div class = "gameboardCell" data-row="1" data-cell="2" data-played="false">1.2</div>
-                <div class = "gameboardCell" data-row="2" data-cell="0" data-played="false">2.0</div>
-                <div class = "gameboardCell" data-row="2" data-cell="1" data-played="false">2.1</div>
-                <div class = "gameboardCell" data-row="2" data-cell="2" data-played="false">2.2</div>
+                <div class = "gameboardCell" data-row="0" data-cell="0" data-played="false"></div>
+                <div class = "gameboardCell" data-row="0" data-cell="1" data-played="false"></div>
+                <div class = "gameboardCell" data-row="0" data-cell="2" data-played="false"></div>
+                <div class = "gameboardCell" data-row="1" data-cell="0" data-played="false"></div>
+                <div class = "gameboardCell" data-row="1" data-cell="1" data-played="false"></div>
+                <div class = "gameboardCell" data-row="1" data-cell="2" data-played="false"></div>
+                <div class = "gameboardCell" data-row="2" data-cell="0" data-played="false"></div>
+                <div class = "gameboardCell" data-row="2" data-cell="1" data-played="false"></div>
+                <div class = "gameboardCell" data-row="2" data-cell="2" data-played="false"></div>
             </div>
         </section>
         <section class="game-data">
             <div class="scores">
-                <h2>SCORES</h2>
-                <h3>Player 1 <span class = "player1-score"></span></h3>
-                <h3>Player 2 <span class = "player2-score"></span></h3>
+                <h2>SCORE</h2>
+                <div class="player-scores">
+                    <div class="player-score-name">Player 1</div>
+                    <div class = "player-score-box"><span class = "player1-score"></span></div>
+                    <div class="player-score-name">Player 2</div>
+                    <div class = "player-score-box"><span class = "player2-score"></span></div>
+                </div>
+                
             </div>
             <div class="options">
-                <h2>OPTIONS</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
             </div>
         </section>
     </main>

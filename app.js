@@ -34,6 +34,9 @@ var gameResultSpan = document.querySelector('.game-result');
 var gameResultImg = document.querySelector('.game-result-img');
 var player1ScoreSpan = document.querySelector('.player1-score');
 var player2ScoreSpan = document.querySelector('.player2-score');
+var overlayResultGif = document.querySelector('.overlay-result-gif');
+var resultGifWin = "https://giphy.com/embed/LrN9NbJNp9SWQ";
+var resultGifDraw = "https://giphy.com/embed/wPOARRtwuFG0";
 
 var player1 = playersDatabase[0];
 var player2 = playersDatabase[1];
@@ -218,15 +221,19 @@ function setPlayer1ScoreSpan(){
 }
 
 function setPlayer2ScoreSpan(){
-    player2ScoreSpan.textContent = player2wins;
+    player2ScoreSpan.textContent = player2.wins;
 }
 
 function setOverlayContent(player){
     if(player !== 'Draw'){
         gameResultSpan.textContent = `${player.Name} is victorious`;
+        overlayResultGif.src = resultGifWin;
     }else{
         gameResultSpan.textContent = `stalemate`;
+        overlayResultGif.src = resultGifDraw;
     }
+
+
 }
 
 function showOverlay(){
@@ -242,9 +249,6 @@ function handleClick(event){
     var row = event.target.dataset.row;
     var cell = event.target.dataset.cell;
 
-    //If there is a winner, click to close winning dialog
-
-
     // Play the game
     if(isCellPlayed(row, cell) !== true){
         playGame(row, cell);
@@ -254,7 +258,7 @@ function handleClick(event){
 
     // Check if there is a winner
     var winner = checkWinner();
-    if(winner !== ''){
+    if(winner !== null){
         setOverlayContent(winner);
         showOverlay();
         console.log(winner);
